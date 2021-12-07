@@ -8,6 +8,7 @@ import { AuthResponseData } from "../models/auth-response.model";
 import { Store } from "@ngrx/store";
 import { AppReducer } from "src/app/store/app.reducer";
 import { Router } from "@angular/router";
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Injectable()
 export class AuthEffects {
@@ -19,7 +20,6 @@ export class AuthEffects {
                 this.authHttpService.signinUser(payload.email, payload.password) :
                 this.authHttpService.signupUser(payload.email, payload.password)
             ).pipe(
-                catchError(err => of(AuthActions.USER_AUTHENTICATE_FAIL())),
                 concatMap((responseData: AuthResponseData) => {
                     let tokenExpirationDate = getDlateWithOffset(+responseData.expiresIn);
                     return [
@@ -30,7 +30,8 @@ export class AuthEffects {
                         }),
                         AuthActions.UPDATE_LOCAL_STORAGE()
                     ]
-                })
+                }),
+                catchError((err: HttpErrorResponse) => of(AuthActions.USER_AUTHENTICATE_FAIL({ error: err })))
             )
         })
     ))

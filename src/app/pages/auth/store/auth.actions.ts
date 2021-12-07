@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store'
 
 export interface AuthenticationData {
@@ -23,9 +24,13 @@ export const SET_USER_SESSION = createAction(
     props<UserSessionData>()
 )
 export const RETRIEVE_USER_SESSION_FROM_LOCAL_STORAGE = createAction('[Auth] retrieve user session from local storage')
-export const USER_AUTHENTICATE_FAIL = createAction('[Auth] post user registration failed')
+export const USER_AUTHENTICATE_FAIL = createAction(
+    '[Auth] post user registration failed',
+    props<{ error: HttpErrorResponse }>()
+)
 export const UPDATE_LOCAL_STORAGE = createAction('[Auth] update session in local storage')
 export const LOGOUT_USER = createAction('[Auth] logout user')
+export const RESOLVE_AUTH_ERROR = createAction('[Auth] resolve auth alert error')
 export const SET_SESSION_TIMEOUT = createAction(
     '[Auth] set session timout',
     props<{ timeoudIndex: number }>()

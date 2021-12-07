@@ -2,13 +2,15 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-            <a class="nav-link active" style="cursor: pointer;">
+            <a class="nav-link" [ngClass]="(selectedTab == 0) ? 'active' : 'text-white'" style="cursor: pointer;"
+                routerLink="" (click)="onSelect(0)">
                 <svg class="bi me-2" width="16" height="16">
 
                 </svg>
                 Home
             </a>
-            <a class="nav-link text-white" style="cursor: pointer;" routerLink="/dashboard">
+            <a class="nav-link text-white" style="cursor: pointer;"
+                [ngClass]="(selectedTab == 1) ? 'active' : 'text-white'" routerLink="/dashboard" (click)="onSelect(1)">
                 <svg class="bi me-2" width="16" height="16">
 
                 </svg>
@@ -16,7 +18,8 @@
             </a>
         </li>
         <li>
-            <a class="nav-link text-white" style="cursor: pointer;" routerLink="/news">
+            <a class="nav-link text-white" style="cursor: pointer;"
+                [ngClass]="(selectedTab == 2) ? 'active' : 'text-white'" routerLink="/news" (click)="onSelect(2)">
                 <svg class="bi me-2" width="16" height="16">
 
                 </svg>

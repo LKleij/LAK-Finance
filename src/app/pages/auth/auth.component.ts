@@ -6,6 +6,7 @@ import { AuthTypes } from './auth.constants';
 import { CustomValidators } from './validators/auth.validators';
 import * as AuthActions from './store/auth.actions'
 import { AppReducer, AppState } from '../../store/app.reducer';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-auth',
@@ -14,14 +15,18 @@ import { AppReducer, AppState } from '../../store/app.reducer';
 })
 export class AuthComponent implements OnInit {
 
+  subscriptionStore: Subscription;
   authType: AuthTypes = AuthTypes.SIGNIN;
   authForm: FormGroup;
   currentFocus: string = '';
+  authError: { errorMessage: string, errorDescription: string } = null;
 
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
     private store: Store<AppReducer>) {
+
+    this.subscriptionStore = store.select('authReducer').subscribe(state => this.authError = state.authError)
 
     const currentNavigation = this.router.getCurrentNavigation()
 
@@ -89,6 +94,10 @@ export class AuthComponent implements OnInit {
   onRetrievePassword() {
     this.authType = AuthTypes.RETRIEVE_PASSWORD;
     this.generateForm();
+  }
+
+  resolveError() {
+    this.store.dispatch(AuthActions.RESOLVE_AUTH_ERROR());
   }
 
 

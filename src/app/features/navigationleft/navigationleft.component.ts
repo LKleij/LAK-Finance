@@ -9,7 +9,7 @@ import * as AuthActions from "../../pages/auth/store/auth.actions"
   styleUrls: ['./navigationleft.component.css']
 })
 export class NavigationleftComponent implements OnInit {
-
+  selectedTab: number = 0;
   constructor(private store: Store<AppReducer>) { }
 
   ngOnInit(): void {
@@ -19,5 +19,8 @@ export class NavigationleftComponent implements OnInit {
     this.store.dispatch(AuthActions.LOGOUT_USER())
   }
 
+  onSelect(num: number) {
+    this.selectedTab = num;
+  }
 
 }

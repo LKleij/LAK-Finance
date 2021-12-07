@@ -15,7 +15,9 @@
     padding: 50px;
     border-radius: 10px;
 }
-
+.btn-close {
+    background-color: transparent;
+}
 .form-control {
     border-radius: 20px;
     background-color: white;
