@@ -1,0 +1,33 @@
+.form-wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.auth-form {
+    background: linear-gradient(130deg, rgba(0, 183, 255, 0.226), white);
+    min-width: 450px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    padding: 50px;
+    border-radius: 10px;
+}
+
+.form-control {
+    border-radius: 20px;
+    background-color: white;
+    
+}
+.forgot-password-link {
+    cursor: pointer;
+}
+
+.btn-submit {
+    width: 100%;
+    border-radius: 20px;
+    background: linear-gradient(to right, rgb(187, 0, 187), rgb(0, 0, 219));
+    font-weight: bold;
+}

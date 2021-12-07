@@ -1,0 +1,59 @@
+<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px; height: 100%;">
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            <a class="nav-link active" style="cursor: pointer;">
+                <svg class="bi me-2" width="16" height="16">
+
+                </svg>
+                Home
+            </a>
+            <a class="nav-link text-white" style="cursor: pointer;" routerLink="/dashboard">
+                <svg class="bi me-2" width="16" height="16">
+
+                </svg>
+                Dashboard
+            </a>
+        </li>
+        <li>
+            <a class="nav-link text-white" style="cursor: pointer;" routerLink="/news">
+                <svg class="bi me-2" width="16" height="16">
+
+                </svg>
+                News
+            </a>
+        </li>
+        <li>
+            <a class="nav-link text-white" style="cursor: pointer;">
+                <svg class="bi me-2" width="16" height="16">
+
+                </svg>
+                Analytics
+            </a>
+        </li>
+        <li>
+            <a class="nav-link text-white" style="cursor: pointer;">
+                <svg class="bi me-2" width="16" height="16">
+
+                </svg>
+                Products
+            </a>
+        </li>
+    </ul>
+    <hr>
+    <div class="dropdown">
+        <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1"
+            data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer;">
+            <img src="https://github.com/mdo.png" alt="" class="rounded-circle me-2" width="32" height="32">
+            <strong>Account</strong>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
+            <li><a class="dropdown-item">Settings</a></li>
+            <li><a class="dropdown-item">Profile</a></li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" (click)="onLogout()" style="cursor: pointer;">Sign out</a></li>
+        </ul>
+    </div>
+</div>
