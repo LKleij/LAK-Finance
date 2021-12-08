@@ -1,6 +1,5 @@
 .item-body {
     position: relative;
-    padding: 10px;
     display: flex;
     flex-direction: column;
     flex: 0 1 auto;
@@ -19,6 +18,8 @@ img {
 }
 
 .item-title {
-    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    /* text-align: center; */
 
 }
