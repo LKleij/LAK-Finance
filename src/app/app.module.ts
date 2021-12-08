@@ -12,12 +12,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { authReducer } from './pages/auth/store/auth.reducer';
 import { AuthEffects } from './pages/auth/store/auth.effects';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
-import { AuthInterceptor } from './pages/auth/interceptors/auth-interceptor.service';
-import { AuthHttpService } from './pages/auth/auth.service';
+import { AuthInterceptor } from './pages/auth/http/interceptors/auth-interceptor.service';
+import { AuthHttpService } from './pages/auth/http/auth.service';
 import { NavigationleftComponent } from './features/navigationleft/navigationleft.component';
 import { NewsComponent } from './pages/news/news.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { AuthGuard } from './pages/auth/guards/auth.guard'
+import { AuthGuard } from './pages/auth/http/guards/auth.guard'
+import { AppInterceptor } from './interceptors/app.interceptor';
+import { NewsHttpInterceptor } from './pages/news/http/interceptor/news.interceptor';
+import { NewsEffects } from './pages/news/store/news.effects';
+import { NewsHttpService } from './pages/news/http/news.service';
+import { _AppReducer } from './store/app.reducer';
+import { NewsItemComponent } from './features/news-item/news-item.component';
 
 @NgModule({
   declarations: [
@@ -27,20 +33,24 @@ import { AuthGuard } from './pages/auth/guards/auth.guard'
     NavigationtopComponent,
     NavigationleftComponent,
     NewsComponent,
-    DashboardComponent
+    DashboardComponent,
+    NewsItemComponent
   ],
   imports: [
     BrowserModule,
     AppRouterModule,
     ReactiveFormsModule,
     HttpClientModule,
-    StoreModule.forRoot({ authReducer: authReducer }),
-    EffectsModule.forRoot([AuthEffects])
+    StoreModule.forRoot(_AppReducer),
+    EffectsModule.forRoot([AuthEffects, NewsEffects])
   ],
   providers: [
+    NewsHttpInterceptor,
+    AuthInterceptor,
     AuthHttpService,
+    NewsHttpService,
     AuthGuard,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

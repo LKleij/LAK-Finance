@@ -1,4 +1,3 @@
-import { state } from "@angular/animations";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Action, createReducer, on } from "@ngrx/store";
 import { UserSession } from "../models/userSession.model";
@@ -45,7 +44,7 @@ const _authReducer = createReducer(initialState,
     })
 );
 
-export function authReducer(state, action: Action) {
+export function authReducer(state: AuthState, action: Action) {
     return _authReducer(state, action);
 }
 

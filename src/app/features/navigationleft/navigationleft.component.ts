@@ -13,6 +13,7 @@ export class NavigationleftComponent implements OnInit {
   constructor(private store: Store<AppReducer>) { }
 
   ngOnInit(): void {
+    this.onSelect(2);
   }
 
   onLogout() {

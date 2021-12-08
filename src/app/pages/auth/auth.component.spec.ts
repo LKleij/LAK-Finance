@@ -4,9 +4,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { provideMockStore, MockStore } from '@ngrx/store/testing'
 
 import { AuthComponent } from './auth.component';
 import { AuthTypes } from './auth.constants';
+import { initialState } from './store/auth.reducer';
 
 const getCurrentNavigationProperties = {
   id: null,
@@ -21,13 +23,14 @@ describe('AuthComponent', () => {
   let component: AuthComponent,
     fixture: ComponentFixture<AuthComponent>,
     el: DebugElement,
-    routerSpy: jasmine.SpyObj<Router>;
+    routerSpy: jasmine.SpyObj<Router>,
+    store: MockStore;
 
   beforeEach(async () => {
     routerSpy = jasmine.createSpyObj('Router', ['getCurrentNavigation'])
     await TestBed.configureTestingModule({
       declarations: [AuthComponent],
-      providers: [{ provide: Router, useValue: routerSpy }],
+      providers: [provideMockStore({ initialState }), { provide: Router, useValue: routerSpy }],
       imports: [RouterTestingModule, ReactiveFormsModule]
     })
       .compileComponents();

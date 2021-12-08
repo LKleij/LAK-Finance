@@ -8,7 +8,7 @@
 }
 
 .auth-form {
-    background: linear-gradient(130deg, rgba(0, 183, 255, 0.226), white);
+    /* background: linear-gradient(130deg, rgba(0, 183, 255, 0.226), white); */
     min-width: 450px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 

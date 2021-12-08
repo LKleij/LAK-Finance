@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import * as AuthActions from "./auth.actions"
 import { catchError, concatMap, mergeMap, take, tap } from "rxjs/operators"
-import { AuthHttpService } from "../auth.service";
+import { AuthHttpService } from "../http/auth.service";
 import { of } from "rxjs";
 import { AuthResponseData } from "../models/auth-response.model";
 import { Store } from "@ngrx/store";
@@ -57,7 +57,7 @@ export class AuthEffects {
         ofType(AuthActions.SET_USER_SESSION),
         mergeMap(payload => {
 
-            this.router.navigate([''])
+            this.router.navigate(['/news'])
 
             let timeout = setTimeout(
                 () => { this.store.dispatch(AuthActions.LOGOUT_USER()) },

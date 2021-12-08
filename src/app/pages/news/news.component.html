@@ -1,1 +1,33 @@
-<p>news works!</p>
+<div class="news-layout">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark news-header">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-3">
+                    <li class="nav-item pe-1">
+                        <button class="btn btn-style" [ngClass]="(activeSection == 0) ? 'active_' : ''"
+                            (click)="getNews('science')"
+                            style="cursor:pointer; width: 200px; text-align: center;">Science</button>
+                    </li>
+                    <li class="nav-item pe-1">
+                        <button class="btn btn-style" [ngClass]="(activeSection == 1) ? 'active_' : ''"
+                            (click)="getNews('us')"
+                            style="cursor:pointer; width: 200px; text-align: center;">Us</button>
+                    </li>
+                    <li class="nav-item pe-1">
+                        <button class="btn btn-style" [ngClass]="(activeSection == 2) ? 'active_' : ''"
+                            (click)="getNews('business')"
+                            style="cursor:pointer; width: 200px; text-align: center;">Business</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="news-content">
+        <app-news-item *ngFor="let newsItem of newsData" [title]="newsItem.title" [image-url]="newsItem.imgUrl">
+        </app-news-item>
+    </div>
+</div>

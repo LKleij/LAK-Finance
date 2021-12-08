@@ -5,9 +5,8 @@
     </button>
 </div>
 
-
 <div class="form-wrapper">
-    <form [formGroup]="authForm" class="auth-form" (ngSubmit)="onSubmit()">
+    <form [formGroup]="authForm" class="auth-form " (ngSubmit)="onSubmit()">
         <h2 class="mb-4">{{ getFormTitle }}</h2>
         <div class="mb-2">
             <input type="email" class="form-control" placeholder="Email" formControlName="email" id="email" email

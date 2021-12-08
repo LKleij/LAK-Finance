@@ -9,10 +9,11 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto me-3">
                 <li class="nav-item pe-2" *ngIf="!isLoggedIn">
-                    <button class="btn-auth btn btn-primary" (click)="toAuthPage('login')">Sign in</button>
+                    <button class="btn-auth btn btn-primary" id="signin" (click)="toAuthPage('login')">Sign in</button>
                 </li>
                 <li class="nav-item" *ngIf="!isLoggedIn">
-                    <button class="btn-auth btn btn-primary" (click)="toAuthPage('signup')">Create account</button>
+                    <button class="btn-auth btn btn-primary" id="signup" (click)="toAuthPage('signup')">Create
+                        account</button>
                 </li>
             </ul>
         </div>
