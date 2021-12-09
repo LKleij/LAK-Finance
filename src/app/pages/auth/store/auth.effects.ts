@@ -13,7 +13,14 @@ import { HttpErrorResponse } from "@angular/common/http";
 @Injectable()
 export class AuthEffects {
 
-    postUserRegistration = createEffect(() => this.actions$.pipe(
+    constructor(
+        private actions$: Actions,
+        private authHttpService: AuthHttpService,
+        private store: Store<AppReducer>,
+        private router: Router
+    ) { }
+
+    postUserAuthentication = createEffect(() => this.actions$.pipe(
         ofType(AuthActions.USER_AUTHENTICATE_SIGNIN, AuthActions.USER_AUTHENTICATE_SIGNUP),
         mergeMap(payload => {
             return (payload.type == AuthActions.USER_AUTHENTICATE_SIGNIN.type ?
@@ -83,13 +90,6 @@ export class AuthEffects {
             })
         })
     ), { dispatch: false })
-
-    constructor(
-        private actions$: Actions,
-        private authHttpService: AuthHttpService,
-        private store: Store<AppReducer>,
-        private router: Router
-    ) { }
 }
 
 function getDlateWithOffset(offsetInSeconds: number) {

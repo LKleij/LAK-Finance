@@ -2,9 +2,6 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { createAction, props } from "@ngrx/store";
 import { NewsResponse } from "../models/get-response.model";
 
-
-
-
 export const GET_NEWS_FROM_NYT = createAction(
     '[News] get news data from nyt',
     props<{ topic: string }>()

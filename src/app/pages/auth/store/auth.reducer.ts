@@ -48,8 +48,6 @@ export function authReducer(state: AuthState, action: Action) {
     return _authReducer(state, action);
 }
 
-
-
 function handleError(errorMessage: string) {
     switch (errorMessage) {
         case 'EMAIL_EXISTS':

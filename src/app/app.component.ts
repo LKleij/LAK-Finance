@@ -18,11 +18,10 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(private store: Store<AppReducer>) {
     this.storeSubscription = store.select('authReducer').subscribe(state => this.isLoggedIn = !!state.userSession)
   }
-  ngOnInit() {
 
+  ngOnInit() {
     if ('userSession' in localStorage)
       this.store.dispatch(AuthActions.RETRIEVE_USER_SESSION_FROM_LOCAL_STORAGE())
-
   }
 
   ngOnDestroy() {

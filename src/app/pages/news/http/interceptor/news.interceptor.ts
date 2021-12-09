@@ -7,7 +7,7 @@ import { Observable } from "rxjs";
 export class NewsHttpInterceptor implements HttpInterceptor {
     private key = 'nCii8HkkjtJmLVGQRBYZAo9ArwQ83xJe';
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        console.log("news");
+
         const modifiedReq = req.clone({ params: new HttpParams().set('api-key', this.key) });
 
         return next.handle(modifiedReq);

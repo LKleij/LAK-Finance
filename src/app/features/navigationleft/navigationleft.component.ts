@@ -10,10 +10,11 @@ import * as AuthActions from "../../pages/auth/store/auth.actions"
 })
 export class NavigationleftComponent implements OnInit {
   selectedTab: number = 0;
+
   constructor(private store: Store<AppReducer>) { }
 
   ngOnInit(): void {
-    this.onSelect(2);
+    this.onSelect(2); // The second tab is selected by default
   }
 
   onLogout() {

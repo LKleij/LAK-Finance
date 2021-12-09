@@ -7,12 +7,11 @@ import { AuthResponseData } from "../models/auth-response.model";
 export class AuthHttpService {
 
     static readonly BASE_URL = 'https://identitytoolkit.googleapis.com/v1/'
-    static readonly SIGNUP_URL = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp'
-    static readonly SIGNIN_URL = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword'
 
     readonly SIGNUP_URL = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp'
     readonly SIGNIN_URL = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword'
 
+    constructor(private http: HttpClient) { }
 
     signupUser(email: string, password: string) {
         return this.http.post<AuthResponseData>(
@@ -35,5 +34,4 @@ export class AuthHttpService {
         )
     }
 
-    constructor(private http: HttpClient) { }
 }

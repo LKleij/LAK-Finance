@@ -3,7 +3,6 @@ import { NewsData } from "../models/news.model";
 import * as NewsActions from "./news.actions"
 import { NewsResponseI } from "../models/get-response.model";
 
-
 export interface NewsState {
     newsData: NewsData[]
     error: string
@@ -13,8 +12,6 @@ const initialState: NewsState = {
     newsData: null,
     error: null
 }
-
-
 
 const _newsReducer = createReducer(initialState,
     on(NewsActions.GET_NEWS_FROM_NYT, (state, payload) => {

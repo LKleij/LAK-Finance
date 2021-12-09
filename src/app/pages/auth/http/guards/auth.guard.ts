@@ -7,8 +7,10 @@ import { AppReducer } from "src/app/store/app.reducer";
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-    constructor(private store: Store<AppReducer>, private router: Router) { }
     isLoggedIn = false;
+
+    constructor(private store: Store<AppReducer>, private router: Router) { }
+
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
         this.store.select('authReducer').pipe(take(1)).subscribe(state => this.isLoggedIn = !!state.userSession);

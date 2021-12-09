@@ -42,13 +42,12 @@ export class NewsComponent implements OnInit, OnDestroy {
     this.store.dispatch(NewsActions.GET_NEWS_FROM_NYT({ topic: topic }));
   }
 
-  ngOnDestroy() {
-    this.storeSubscription.unsubscribe();
-  }
-
   resolveError() {
     this.store.dispatch(NewsActions.RESOLVE_NEWS_ERROR());
   }
 
+  ngOnDestroy() {
+    this.storeSubscription.unsubscribe();
+  }
 
 }

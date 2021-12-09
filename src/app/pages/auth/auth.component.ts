@@ -62,7 +62,7 @@ export class AuthComponent implements OnInit {
     else if (this.isSignupForm)
       this.store.dispatch(AuthActions.USER_AUTHENTICATE_SIGNUP(userInfo))
     else if (this.isRetrievePasswordForm) {
-
+      // not handled yet
     }
   }
 
