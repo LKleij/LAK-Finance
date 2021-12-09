@@ -9,12 +9,10 @@ import * as NewsActions from './news.actions'
 
 @Injectable()
 export class NewsEffects {
-
     getNewsFromNYT$ = createEffect(() => this.action$.pipe(
         ofType(NewsActions.GET_NEWS_FROM_NYT),
         mergeMap(payload => this.newsService.retrieveTopStories(payload.topic).pipe(
             concatMap(response => {
-                console.log(response)
                 return [NewsActions.SET_NEWS({ newsData: response })]
             }),
             catchError(err => of(NewsActions.GET_NEWS_FROM_NYT_FAIL({ error: err })))

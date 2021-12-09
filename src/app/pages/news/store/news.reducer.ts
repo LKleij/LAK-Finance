@@ -6,10 +6,12 @@ import { NewsResponseI } from "../models/get-response.model";
 
 export interface NewsState {
     newsData: NewsData[]
+    error: string
 }
 
 const initialState: NewsState = {
-    newsData: null
+    newsData: null,
+    error: null
 }
 
 
@@ -28,7 +30,10 @@ const _newsReducer = createReducer(initialState,
     }),
     on(NewsActions.GET_NEWS_FROM_NYT_FAIL, (state, payload) => {
         console.log(payload.error)
-        return { ...state }
+        return { ...state, error: "Something went wrong loading the news. Try again later" }
+    }),
+    on(NewsActions.RESOLVE_NEWS_ERROR, (state) => {
+        return { ...state, error: null }
     })
 
 )

@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { AuthTypes } from './auth.constants';
 import { CustomValidators } from './validators/auth.validators';
 import * as AuthActions from './store/auth.actions'
-import { AppReducer, AppState } from '../../store/app.reducer';
+import { AppReducer } from '../../store/app.reducer';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -171,8 +171,4 @@ export class AuthComponent implements OnInit {
     else if (this.isRetrievePasswordForm)
       return 'Reset password';
   }
-
-
-
-
 }

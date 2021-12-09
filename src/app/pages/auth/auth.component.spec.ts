@@ -56,7 +56,7 @@ describe('AuthComponent', () => {
     expect(component.authType).toEqual(AuthTypes.SIGNIN);
   })
 
-  it('should set authentication type to Signin when navigation was called with state parameter signin', () => {
+  it('should set authentication type to Signin when using navigation with state parameter signin', () => {
     routerSpy.getCurrentNavigation.and.returnValue({ ...getCurrentNavigationProperties, extras: { state: { authType: AuthTypes.SIGNIN } } })
     fixture = TestBed.createComponent(AuthComponent);
     component = fixture.componentInstance;
@@ -66,7 +66,7 @@ describe('AuthComponent', () => {
     expect(component.authType).toEqual(AuthTypes.SIGNIN);
   })
 
-  it('should set authentication type to signup when navigation was called with state parameter signup', () => {
+  it('should set authentication type to signup when using navigation with state parameter signup', () => {
     routerSpy.getCurrentNavigation.and.returnValue({ ...getCurrentNavigationProperties, extras: { state: { authType: AuthTypes.SIGNUP } } })
     fixture = TestBed.createComponent(AuthComponent);
     component = fixture.componentInstance;
@@ -87,8 +87,6 @@ describe('AuthComponent', () => {
 
     expect(component.authType).toEqual(AuthTypes.RETRIEVE_PASSWORD);
   })
-
-
 
   it('should generate sigin form when authentication type is signin (confirm email and confirm passwords fiels must be disabled)', () => {
     routerSpy.getCurrentNavigation.and.returnValue(getCurrentNavigationProperties)

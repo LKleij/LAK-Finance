@@ -14,9 +14,13 @@ export class NewsComponent implements OnInit, OnDestroy {
   storeSubscription: Subscription;
   newsData: NewsData[];
   activeSection: number;
+  newsError: string = null;
 
   constructor(private store: Store<AppReducer>) {
-    this.storeSubscription = store.select('newsReducer').subscribe(state => this.newsData = state.newsData);
+    this.storeSubscription = store.select('newsReducer').subscribe(state => {
+      this.newsData = state.newsData;
+      this.newsError = state.error;
+    })
   }
 
   ngOnInit(): void {
@@ -41,5 +45,10 @@ export class NewsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.storeSubscription.unsubscribe();
   }
+
+  resolveError() {
+    this.store.dispatch(NewsActions.RESOLVE_NEWS_ERROR());
+  }
+
 
 }

@@ -74,9 +74,4 @@ describe('NavigationtopComponent', () => {
     expect(el.query(By.css('#signup'))).toBeFalsy()
   })
 
-  it('toAuthPage with signin param should redirect to signin page', () => {
-
-    pending();
-
-  })
 });

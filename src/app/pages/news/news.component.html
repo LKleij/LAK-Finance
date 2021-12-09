@@ -1,4 +1,11 @@
 <div class="news-layout">
+    <div class="alert alert-danger" role="alert"
+        style="position: absolute; width: 100%; top:0; display: flex; justify-content: space-between; z-index: 110;"
+        *ngIf="newsError">
+        {{ newsError }}
+        <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close" (click)="resolveError()">
+        </button>
+    </div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark news-header">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

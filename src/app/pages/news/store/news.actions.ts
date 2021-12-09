@@ -19,3 +19,5 @@ export const GET_NEWS_FROM_NYT_FAIL = createAction(
     '[News] faield to get news from NYT',
     props<{ error: HttpErrorResponse }>()
 )
+
+export const RESOLVE_NEWS_ERROR = createAction('[News] resolve news error');
