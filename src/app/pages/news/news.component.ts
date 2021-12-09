@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { AppReducer } from 'src/app/store/app.reducer';
@@ -15,6 +15,12 @@ export class NewsComponent implements OnInit, OnDestroy {
   newsData: NewsData[];
   activeSection: number;
   newsError: string = null;
+
+  @HostListener('document:click', ['$event'])
+  documentClick(event: MouseEvent) {
+    if (this.newsError)
+      this.resolveError();
+  }
 
   constructor(private store: Store<AppReducer>) {
     this.storeSubscription = store.select('newsReducer').subscribe(state => {

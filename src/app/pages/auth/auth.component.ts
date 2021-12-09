@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -21,6 +21,12 @@ export class AuthComponent implements OnInit {
   currentFocus: string = '';
   authError: { errorMessage: string, errorDescription: string } = null;
 
+  @HostListener('document:click', ['$event'])
+  documentClick(event: MouseEvent) {
+    if (this.authError)
+      this.resolveError();
+  }
+
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -37,6 +43,7 @@ export class AuthComponent implements OnInit {
 
   ngOnInit(): void {
     this.generateForm();
+
 
     document.addEventListener('focus', (event: Event) => {
       const eventTarget: Element = event.target as Element;

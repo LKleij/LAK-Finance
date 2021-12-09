@@ -39,7 +39,6 @@ const _authReducer = createReducer(initialState,
         return { ...state, authError: { errorMessage: errorMessage, errorDescription: handleError(errorMessage) } }
     }),
     on(AuthActions.RESOLVE_AUTH_ERROR, (state) => {
-
         return { ...state, authError: null }
     })
 );
