@@ -10,11 +10,11 @@
         <div class="mb-3">
             <div class="input-header">
                 <label>Email</label>
-                <small class="error-color"
-                    *ngIf="!isFocusedEmail && formEmail.touched && !(formEmail.status == 'VALID')">Not
+                <small class="error-color" *ngIf="!isFocusedEmail && formEmail.value != '' && !formEmail.valid">Not
                     a
                     valid
                     email</small>
+                <small class="error-color" *ngIf="formEmail.value == ''">Required</small>
             </div>
             <input type="email" class="form-control _form-control" placeholder="Enter your email"
                 formControlName="email" id="email" email required>
@@ -23,9 +23,10 @@
             <div class="input-header">
                 <label>Confirm Email</label>
                 <small class="error-color"
-                    *ngIf="!isFocusedEmail && !isFocusedEmailConfirm && formEmailConfirm.touched && formEmailErrors">Emails
+                    *ngIf="!isFocusedEmail && !isFocusedEmailConfirm && formEmailConfirm.value != '' && formEmailErrors">Emails
                     don't
                     match</small>
+                <small class="error-color" *ngIf="formEmailConfirm.value == ''">Required</small>
             </div>
             <input type="email" class="form-control" placeholder="Repeat your email" id="emailConfirm"
                 formControlName="emailConfirm">
@@ -34,9 +35,11 @@
             <div class="input-header">
                 <label>Password</label>
                 <small
-                    *ngIf="isSignupForm && !isFocusedPassword && formPassword.touched && !(formPassword.status == 'VALID')"
+                    *ngIf="isSignupForm && !isFocusedPassword && formPassword.value != '' && !(formPassword.status == 'VALID')"
                     style="color: red;">Not a valid
                     password</small>
+
+                <small class="error-color" *ngIf="formPassword.value == ''">Required</small>
             </div>
             <input type="password" class="form-control" placeholder="Enter a secure password" id="password"
                 formControlName="password">
@@ -46,9 +49,11 @@
             <div class="input-header">
                 <label>Confirm password</label>
                 <small class="error-color"
-                    *ngIf="!isFocusedPassword && !isFocusedPasswordConfirm && formPasswordErrors && !(formPasswordConfirm.value == '')">Passwords
+                    *ngIf="!isFocusedPassword && !isFocusedPasswordConfirm && formPasswordErrors && formPasswordConfirm.value != ''">Passwords
                     don't
                     match</small>
+                <small class="error-color" *ngIf="formPasswordConfirm.value == ''">Required</small>
+
             </div>
             <input type="password" class="form-control" placeholder="Repeat your password"
                 formControlName="passwordConfirm" id="passwordConfirm">
