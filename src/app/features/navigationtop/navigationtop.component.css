@@ -1,11 +1,20 @@
 .btn-auth {
-    border-radius: 20px;
     padding-left: 30px;
     padding-right: 30px;
     font-weight: bold;
-    background: linear-gradient(to right, rgb(187, 0, 187), rgb(0, 0, 219));
+    background: #00a184;
+    color: white;
+    border-color: #00a184;
 }
 
 .nav-personal {
-    background-color: aliceblue;
+    /* background-color: red !important; */
+}
+
+.logo {
+    color: white !important;
+    font-weight: bold;
+}
+.nav-color {
+    background-color: #24303E !important;
 }

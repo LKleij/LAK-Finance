@@ -1,62 +1,59 @@
-<div class="alert alert-danger" role="alert"
-    style="position: absolute; width: 100%; top:0; display: flex; justify-content: space-between;" *ngIf="authError">
+<article class="alert alert-danger _alert" role="alert" *ngIf="authError">
     {{ authError.errorDescription }}
     <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close" (click)="resolveError()">
     </button>
-</div>
+</article>
 
 <div class="form-wrapper">
     <form [formGroup]="authForm" class="auth-form " (ngSubmit)="onSubmit()">
         <h2 class="mb-4">{{ getFormTitle }}</h2>
-        <div class="mb-2">
-            <input type="email" class="form-control" placeholder="Email" formControlName="email" id="email" email
-                required>
-            <small
-                *ngIf="!isFocusedEmail && formEmail.touched && !(formEmail.status == 'VALID'); else placeholderEmailField"
-                style="color: red;">Not a
-                valid
-                email</small>
-            <ng-template #placeholderEmailField>
-                <small> <span>&#8204;</span></small>
-            </ng-template>
-
-        </div>
-        <div class="mb-2" *ngIf="isSignupForm">
-            <input type="email" class="form-control" placeholder="Confirm email" id="emailConfirm"
-                formControlName="emailConfirm">
-
-            <small
-                *ngIf="!isFocusedEmail && !isFocusedEmailConfirm && formEmailConfirm.touched && formEmailErrors; else placeholderConfirmEmailField"
-                style="color: red;">Emails don't
-                match</small>
-            <ng-template #placeholderConfirmEmailField>
-                <small> <span>&#8204;</span></small>
-            </ng-template>
-        </div>
-        <div class="mb-2" *ngIf="!isRetrievePasswordForm">
-            <input type="password" class="form-control" placeholder="Password" id="password" formControlName="password">
-            <small *ngIf="isSignupForm">Password must be at least 6 characters long</small>
-            <br *ngIf="isSignupForm">
-            <small
-                *ngIf="isSignupForm && !isFocusedPassword && formPassword.touched && !(formPassword.status == 'VALID'); else placeholderPasswordField"
-                style="color: red;">Not a valid
-                password</small>
-            <ng-template #placeholderPasswordField>
-                <small> <span>&#8204;</span></small>
-            </ng-template>
-        </div>
-        <div class="mb-2" *ngIf="isSignupForm">
-            <input type="password" class="form-control" placeholder="Confirm password" formControlName="passwordConfirm"
-                id="passwordConfirm">
-            <small
-                *ngIf="!isFocusedPassword && !isFocusedPasswordConfirm && formPasswordErrors && !(formPasswordConfirm.value == ''); else placeholderConfirmPasswordField"
-                style="color: red;">Passwords don't
-                match</small>
-            <ng-template #placeholderConfirmPasswordField>
-                <small> <span>&#8204;</span></small>
-            </ng-template>
-        </div>
         <div class="mb-3">
+            <div class="input-header">
+                <label>Email</label>
+                <small class="error-color"
+                    *ngIf="!isFocusedEmail && formEmail.touched && !(formEmail.status == 'VALID')">Not
+                    a
+                    valid
+                    email</small>
+            </div>
+            <input type="email" class="form-control _form-control" placeholder="Enter your email"
+                formControlName="email" id="email" email required>
+        </div>
+        <div class="mb-3" *ngIf="isSignupForm">
+            <div class="input-header">
+                <label>Confirm Email</label>
+                <small class="error-color"
+                    *ngIf="!isFocusedEmail && !isFocusedEmailConfirm && formEmailConfirm.touched && formEmailErrors">Emails
+                    don't
+                    match</small>
+            </div>
+            <input type="email" class="form-control" placeholder="Repeat your email" id="emailConfirm"
+                formControlName="emailConfirm">
+        </div>
+        <div class="mb-3" *ngIf="!isRetrievePasswordForm">
+            <div class="input-header">
+                <label>Password</label>
+                <small
+                    *ngIf="isSignupForm && !isFocusedPassword && formPassword.touched && !(formPassword.status == 'VALID')"
+                    style="color: red;">Not a valid
+                    password</small>
+            </div>
+            <input type="password" class="form-control" placeholder="Enter a secure password" id="password"
+                formControlName="password">
+            <small *ngIf="isSignupForm">Password must be at least 6 characters long</small>
+        </div>
+        <div class="mb-3" *ngIf="isSignupForm">
+            <div class="input-header">
+                <label>Confirm password</label>
+                <small class="error-color"
+                    *ngIf="!isFocusedPassword && !isFocusedPasswordConfirm && formPasswordErrors && !(formPasswordConfirm.value == '')">Passwords
+                    don't
+                    match</small>
+            </div>
+            <input type="password" class="form-control" placeholder="Repeat your password"
+                formControlName="passwordConfirm" id="passwordConfirm">
+        </div>
+        <div class="mb-3 mt-5">
             <button type="submit" class="btn btn-primary btn-submit">{{ getFormButtonText }}</button>
         </div>
         <a class="forgot-password-link" (click)="onRetrievePassword()" *ngIf="isSigninForm">Forgot

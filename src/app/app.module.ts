@@ -24,6 +24,7 @@ import { NewsEffects } from './pages/news/store/news.effects';
 import { NewsHttpService } from './pages/news/http/news.service';
 import { _AppReducer } from './store/app.reducer';
 import { NewsItemComponent } from './features/news-item/news-item.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { NewsItemComponent } from './features/news-item/news-item.component';
     AppRouterModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     StoreModule.forRoot(_AppReducer),
     EffectsModule.forRoot([AuthEffects, NewsEffects])
   ],

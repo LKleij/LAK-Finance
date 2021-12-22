@@ -107,7 +107,6 @@ export class AuthComponent implements OnInit {
     this.store.dispatch(AuthActions.RESOLVE_AUTH_ERROR());
   }
 
-
   get isFocusedEmail() {
     return this.currentFocus == 'email';
   }
